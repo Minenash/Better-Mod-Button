@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "smb",
+  "version": "${version}",
+  "name": "Better Mod Button",
+  "description": "Makes the Main Menu and Pause Menu look Better.",
+  "authors": [
+    "Minenash"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/bettermodbutton/icon.png",
+  "environment": "client",
+  "mixins": [
+    "smb.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.7.0",
+    "modmenu": ">=1.8.0",
+    "minecraft": ">=1.15"
+  },
+  "custom": {
+    "modmenu:clientsideOnly": true
+  }
+}

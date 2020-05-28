@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "com.minenash.bettermodbutton.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "client": [
+    "ScreenMixin",
+    "TitleScreenMixin",
+    "GameMenuScreenMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
