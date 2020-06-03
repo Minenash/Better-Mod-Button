@@ -3,7 +3,7 @@
   "id": "smb",
   "version": "${version}",
   "name": "Better Mod Button",
-  "description": "Makes the Main Menu and Pause Menu look Better.",
+  "description": "Fixes the location of ModMenu's Mod Button",
   "authors": [
     "Minenash"
   ],
