@@ -1,6 +1,6 @@
 package com.minenash.bettermodbutton.mixin;
 
-import com.minenash.bettermodbutton.ModCount;
+import com.minenash.bettermodbutton.ModChecker;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screen.GameMenuScreen;
@@ -19,11 +19,11 @@ public class GameMenuScreenMixin extends Screen {
     protected GameMenuScreenMixin(Text title) { super(title); }
 
     @Inject(method = "render", at = @At("TAIL"))
-    public void render(int mouseX, int mouseY, float delta, CallbackInfo _) {
+    public void render(int mouseX, int mouseY, float delta, CallbackInfo _c) {
         int y = this.height - 10;
         this.drawString(this.font, "Fabric:"    , 2 , y, 0xCCCCCC);
-        this.drawString(this.font, ModCount.count + ""    , 40, y, 0xFFFF55);
-        this.drawString(this.font, I18n.translate("bettermodbutton.modsloaded"), 44 + ModCount.length * 6, y, 0xCCCCCC);
+        this.drawString(this.font, ModChecker.count + ""    , 40, y, 0xFFFF55);
+        this.drawString(this.font, I18n.translate("bettermodbutton.modsloaded"), 44 + ModChecker.length * 6, y, 0xCCCCCC);
     }
 
 }

@@ -1,6 +1,6 @@
 package com.minenash.bettermodbutton.mixin;
 
-import com.minenash.bettermodbutton.ModCount;
+import com.minenash.bettermodbutton.ModChecker;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screen.Screen;
@@ -21,8 +21,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class TitleScreenMixin extends Screen {
 
   @Inject(method = "init", at = @At("HEAD"))
-  private void setCount(CallbackInfo _) {
-    ModCount.init();
+  private void setCount(CallbackInfo _c) {
+    ModChecker.init();
   }
 
   protected TitleScreenMixin(Text title) { super(title); }
@@ -30,11 +30,11 @@ public abstract class TitleScreenMixin extends Screen {
   @Shadow private long backgroundFadeStart;
 
   @Inject(method = "render", at = @At("TAIL"))
-  public void render(int mouseX, int mouseY, float delta, CallbackInfo _) {
-    int y = this.height - 20;
+  public void render(int mouseX, int mouseY, float delta, CallbackInfo _c) {
+    int y = this.height - 20 - (ModChecker.needsShifting ? 10 : 0);
     this.drawString(this.font, "Fabric:", 2 , y, 0xCCCCCC | getFade());
-    this.drawString(this.font, Integer.toString(ModCount.count), 40, y, 0xFFFF55 | getFade());
-    this.drawString(this.font, I18n.translate("bettermodbutton.modsloaded"), 44 + ModCount.length * 6, y, 0xCCCCCC | getFade());
+    this.drawString(this.font, Integer.toString(ModChecker.count), 40, y, 0xFFFF55 | getFade());
+    this.drawString(this.font, I18n.translate("bettermodbutton.modsloaded"), 44 + ModChecker.length * 6, y, 0xCCCCCC | getFade());
   }
 
   private int getFade() {
