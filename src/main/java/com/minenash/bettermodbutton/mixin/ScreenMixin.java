@@ -7,6 +7,9 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.TitleScreen;
 import net.minecraft.client.gui.widget.AbstractButtonWidget;
 import net.minecraft.client.resource.language.I18n;
+import net.minecraft.text.LiteralText;
+import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -31,7 +34,7 @@ public abstract class ScreenMixin {
     @Inject(at = @At("HEAD"), method = "addButton", cancellable = true)
     public void addButtonInject(AbstractButtonWidget button, CallbackInfoReturnable callback) {
 
-        String message = button.getMessage();
+        Text message = button.getMessage();
 
         if ((Object)this instanceof TitleScreen) {
 
@@ -40,27 +43,27 @@ public abstract class ScreenMixin {
             else if (button.y > (this.height / 4 + 48 + 24 * 3) + 12)
                 button.y -= 12;
 
-            if (message.equals(I18n.translate("menu.online")))
+            if (message.equals(new TranslatableText("menu.online")))
                 button.setWidth(98);
-            else if (message.equals(I18n.translate("modmenu.title") + " " + I18n.translate("modmenu.loaded", ModMenu.getDisplayedModCount()))) {
+            else if (message.equals(new TranslatableText("modmenu.title").append(new LiteralText(" ")).append(new TranslatableText("modmenu.loaded", ModMenu.getDisplayedModCount())))) {
                 button.y -= 24;
                 button.x = this.width / 2 + 2;
                 button.setWidth(98);
-                button.setMessage(I18n.translate("modmenu.title"));
+                button.setMessage(new TranslatableText("modmenu.title"));
             }
         }
         else if ((Object)this instanceof GameMenuScreen) {
 
-            if (message.equals(I18n.translate("menu.reportBugs"))) {
+            if (message.equals(new TranslatableText("menu.reportBugs"))) {
                 bugReportButton = button;
                 callback.cancel();
             }
-            else if (message.equals(I18n.translate("modmenu.title") + " " + I18n.translate("modmenu.loaded", ModMenu.getDisplayedModCount()))) {
+            else if (message.equals(new TranslatableText("modmenu.title").append(new LiteralText(" ")).append(new TranslatableText("modmenu.loaded", ModMenu.getDisplayedModCount())))) {
                 if (bugReportButton == null) return;
                 button.x = bugReportButton.x;
                 button.y = bugReportButton.y + 12;
                 button.setWidth(bugReportButton.getWidth());
-                button.setMessage(I18n.translate("modmenu.title"));
+                button.setMessage(new TranslatableText("modmenu.title"));
             }
             else {
                 button.y += (button.y >= (this.height / 4 - 16 + 24 * 4 - 1) + 12) ? -12 : 12;

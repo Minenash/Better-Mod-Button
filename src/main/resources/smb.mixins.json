@@ -3,9 +3,9 @@
   "package": "com.minenash.bettermodbutton.mixin",
   "compatibilityLevel": "JAVA_8",
   "client": [
+    "GameMenuScreenMixin",
     "ScreenMixin",
-    "TitleScreenMixin",
-    "GameMenuScreenMixin"
+    "TitleScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1

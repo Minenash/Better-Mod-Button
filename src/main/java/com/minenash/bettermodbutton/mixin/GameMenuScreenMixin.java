@@ -5,7 +5,9 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screen.GameMenuScreen;
 import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.gui.widget.OptionButtonWidget;
 import net.minecraft.client.resource.language.I18n;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -19,11 +21,12 @@ public class GameMenuScreenMixin extends Screen {
     protected GameMenuScreenMixin(Text title) { super(title); }
 
     @Inject(method = "render", at = @At("TAIL"))
-    public void render(int mouseX, int mouseY, float delta, CallbackInfo _c) {
+    public void render(MatrixStack matrices, int mouseX, int mouseY, float delta, CallbackInfo _c) {
         int y = this.height - 10;
-        this.drawString(this.font, "Fabric:"    , 2 , y, 0xCCCCCC);
-        this.drawString(this.font, ModChecker.count + ""    , 40, y, 0xFFFF55);
-        this.drawString(this.font, I18n.translate("bettermodbutton.modsloaded"), 44 + ModChecker.length * 6, y, 0xCCCCCC);
+
+        this.drawStringWithShadow(matrices, this.textRenderer, "Fabric:"    , 2 , y, 0xCCCCCC);
+        this.drawStringWithShadow(matrices, this.textRenderer, ModChecker.count + ""    , 40, y, 0xFFFF55);
+        this.drawStringWithShadow(matrices, this.textRenderer, I18n.translate("bettermodbutton.modsloaded"), 44 + ModChecker.length * 6, y, 0xCCCCCC);
     }
 
 }
