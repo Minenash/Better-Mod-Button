@@ -32,7 +32,7 @@ public abstract class TitleScreenMixin extends Screen {
   @Inject(method = "render", at = @At("TAIL"))
   public void render(int mouseX, int mouseY, float delta, CallbackInfo _c) {
     int y = this.height - 20 - (ModChecker.needsShifting ? 10 : 0);
-    this.drawString(this.font, "Fabric:", 2 , y, 0xCCCCCC | getFade());
+    this.drawString(this.font, "Fabric:" , 2 , y, 0xCCCCCC | getFade());
     this.drawString(this.font, Integer.toString(ModChecker.count), 40, y, 0xFFFF55 | getFade());
     this.drawString(this.font, I18n.translate("bettermodbutton.modsloaded"), 44 + ModChecker.length * 6, y, 0xCCCCCC | getFade());
   }
