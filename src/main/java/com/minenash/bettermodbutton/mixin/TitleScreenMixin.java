@@ -35,9 +35,9 @@ public abstract class TitleScreenMixin extends Screen {
   public void render(MatrixStack matrices, int mouseX, int mouseY, float delta, CallbackInfo _c) {
     int y = this.height - 20 - (ModChecker.needsShifting ? 10 : 0);
 
-    this.drawStringWithShadow(matrices, this.textRenderer, "Fabric:", 2 , y, 0xCCCCCC | getFade());
-    this.drawStringWithShadow(matrices, this.textRenderer, Integer.toString(ModChecker.count), 40, y, 0xFFFF55 | getFade());
-    this.drawStringWithShadow(matrices, this.textRenderer, I18n.translate("bettermodbutton.modsloaded"), 44 + ModChecker.length * 6, y, 0xCCCCCC | getFade());
+    drawStringWithShadow(matrices, this.textRenderer, "Fabric:", 2 , y, 0xCCCCCC | getFade());
+    drawStringWithShadow(matrices, this.textRenderer, Integer.toString(ModChecker.count), 40, y, 0xFFFF55 | getFade());
+    drawStringWithShadow(matrices, this.textRenderer, I18n.translate("bettermodbutton.modsloaded"), 44 + ModChecker.length * 6, y, 0xCCCCCC | getFade());
   }
 
   private int getFade() {

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "smb",
+  "id": "better_mod_button",
   "version": "${version}",
   "name": "Better Mod Button",
   "description": "Fixes the location of ModMenu's Mod Button",
@@ -18,8 +18,5 @@
     "fabricloader": ">=0.8.0",
     "modmenu": ">=1.12.0",
     "minecraft": ">=1.16"
-  },
-  "custom": {
-    "modmenu:clientsideOnly": true
   }
 }

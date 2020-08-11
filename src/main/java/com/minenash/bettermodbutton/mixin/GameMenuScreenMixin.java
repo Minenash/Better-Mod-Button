@@ -24,9 +24,9 @@ public class GameMenuScreenMixin extends Screen {
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta, CallbackInfo _c) {
         int y = this.height - 10;
 
-        this.drawStringWithShadow(matrices, this.textRenderer, "Fabric:"    , 2 , y, 0xCCCCCC);
-        this.drawStringWithShadow(matrices, this.textRenderer, ModChecker.count + ""    , 40, y, 0xFFFF55);
-        this.drawStringWithShadow(matrices, this.textRenderer, I18n.translate("bettermodbutton.modsloaded"), 44 + ModChecker.length * 6, y, 0xCCCCCC);
+        drawStringWithShadow(matrices, this.textRenderer, "Fabric:"    , 2 , y, 0xCCCCCC);
+        drawStringWithShadow(matrices, this.textRenderer, ModChecker.count + ""    , 40, y, 0xFFFF55);
+        drawStringWithShadow(matrices, this.textRenderer, I18n.translate("bettermodbutton.modsloaded"), 44 + ModChecker.length * 6, y, 0xCCCCCC);
     }
 
 }
